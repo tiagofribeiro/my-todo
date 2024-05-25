@@ -2994,30 +2994,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"MyTodo@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "MyTodo@workspace:."
-  dependencies:
-    "@babel/core": ^7.20.0
-    "@babel/preset-env": ^7.20.0
-    "@babel/runtime": ^7.20.0
-    "@react-native/babel-preset": 0.74.83
-    "@react-native/eslint-config": 0.74.83
-    "@react-native/metro-config": 0.74.83
-    "@react-native/typescript-config": 0.74.83
-    "@types/react": ^18.2.6
-    "@types/react-test-renderer": ^18.0.0
-    babel-jest: ^29.6.3
-    eslint: ^8.19.0
-    jest: ^29.6.3
-    prettier: 2.8.8
-    react: 18.2.0
-    react-native: 0.74.1
-    react-test-renderer: 18.2.0
-    typescript: 5.0.4
-  languageName: unknown
-  linkType: soft
-
 "abbrev@npm:^2.0.0":
   version: 2.0.0
   resolution: "abbrev@npm:2.0.0"
@@ -7243,6 +7219,30 @@ __metadata:
   checksum: aa92de608021b242401676e35cfa5aa42dd70cbdc082b916da7fb925c542173e36bce97ea3e804923fe92c0ad991434e4a38327e15a1b5b5f945d66df615ae6d
   languageName: node
   linkType: hard
+
+"my-todo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "my-todo@workspace:."
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@babel/preset-env": ^7.20.0
+    "@babel/runtime": ^7.20.0
+    "@react-native/babel-preset": 0.74.83
+    "@react-native/eslint-config": 0.74.83
+    "@react-native/metro-config": 0.74.83
+    "@react-native/typescript-config": 0.74.83
+    "@types/react": ^18.2.6
+    "@types/react-test-renderer": ^18.0.0
+    babel-jest: ^29.6.3
+    eslint: ^8.19.0
+    jest: ^29.6.3
+    prettier: 2.8.8
+    react: 18.2.0
+    react-native: 0.74.1
+    react-test-renderer: 18.2.0
+    typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
 
 "natural-compare@npm:^1.4.0":
   version: 1.4.0
