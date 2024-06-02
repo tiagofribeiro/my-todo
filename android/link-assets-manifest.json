@@ -1,0 +1,77 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Archivo-Black.ttf",
+      "sha1": "cce504ce06604c24c930150048637c4a408780ad"
+    },
+    {
+      "path": "assets/fonts/Archivo-BlackItalic.ttf",
+      "sha1": "0094d92d8ebd0fab9f241049fe46dd31679cf1fc"
+    },
+    {
+      "path": "assets/fonts/Archivo-Bold.ttf",
+      "sha1": "eb82d92b518bfb11b7b5768076849dbeba3de0ac"
+    },
+    {
+      "path": "assets/fonts/Archivo-BoldItalic.ttf",
+      "sha1": "478b4231f775790ce4372d68c7b42b4a26441c76"
+    },
+    {
+      "path": "assets/fonts/Archivo-ExtraBold.ttf",
+      "sha1": "ff3738601abc439725a6548f3192cd3d3bbabf38"
+    },
+    {
+      "path": "assets/fonts/Archivo-ExtraBoldItalic.ttf",
+      "sha1": "942e5fa4986b44ebeb8447029d0ee7f6eef20f86"
+    },
+    {
+      "path": "assets/fonts/Archivo-ExtraLight.ttf",
+      "sha1": "64b632fa760f53e6c820ac43f27b8156209a127a"
+    },
+    {
+      "path": "assets/fonts/Archivo-ExtraLightItalic.ttf",
+      "sha1": "66c819c6622e80461b8bdfd9cc03942b41d66c7f"
+    },
+    {
+      "path": "assets/fonts/Archivo-Italic.ttf",
+      "sha1": "cb2816cb4858c791921679388d1fcffe4e359553"
+    },
+    {
+      "path": "assets/fonts/Archivo-Light.ttf",
+      "sha1": "2978aaf1f743c46402a38023df7f6af7bda22906"
+    },
+    {
+      "path": "assets/fonts/Archivo-LightItalic.ttf",
+      "sha1": "673384a6bbf36bd69d6f7203da43e7b89d71f949"
+    },
+    {
+      "path": "assets/fonts/Archivo-Medium.ttf",
+      "sha1": "4bdd76137310b22c3263c63041e1f93734eb06bc"
+    },
+    {
+      "path": "assets/fonts/Archivo-MediumItalic.ttf",
+      "sha1": "83aa14d65804d971828752e58718c8224099cb74"
+    },
+    {
+      "path": "assets/fonts/Archivo-Regular.ttf",
+      "sha1": "c14f15d27da595dcfe84fde32fdb75fc1e970e46"
+    },
+    {
+      "path": "assets/fonts/Archivo-SemiBold.ttf",
+      "sha1": "2bc6020da26a12e3f9918f076bd00854618aaceb"
+    },
+    {
+      "path": "assets/fonts/Archivo-SemiBoldItalic.ttf",
+      "sha1": "48376919b0fbe7f1ddc059947f27219c37861b9f"
+    },
+    {
+      "path": "assets/fonts/Archivo-Thin.ttf",
+      "sha1": "6166705f2dbe71217f013f4a360d354da7ac3eaf"
+    },
+    {
+      "path": "assets/fonts/Archivo-ThinItalic.ttf",
+      "sha1": "f37e9ea66afed053967cc9b5515e3b50bde6bde4"
+    }
+  ]
+}
