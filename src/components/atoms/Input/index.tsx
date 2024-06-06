@@ -1,8 +1,12 @@
 import { Input } from "./styles";
 
-const AtomInput = () => {
+type AtomInputType = {
+    placeholder?: string;
+}
+
+const AtomInput = ({ placeholder }: AtomInputType) => {
     return (
-        <Input />
+        <Input placeholder={placeholder} placeholderTextColor={'#9D9086'}/>
     );
 }
 

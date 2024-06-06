@@ -3,13 +3,10 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  useColorScheme,
-} from 'react-native';
+import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-import LoginView from './src/screens/auth/LoginView';
+import RootStack from './src/navigation/root';
 
 const App = (): React.JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -21,7 +18,11 @@ const App = (): React.JSX.Element => {
         barStyle={'dark-content'}
         backgroundColor={'transparent'}
       />
-      <LoginView />
+      {/*  */}
+      <NavigationContainer>
+        <RootStack />
+      </NavigationContainer>
+      {/*  */}
     </SafeAreaView>
   );
 }

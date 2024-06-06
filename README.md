@@ -13,6 +13,7 @@ Tasklist and Calendar app made with React Native
 - React Native 0.74
 - Typescript
 - Styled-Components 6
+- React Navigation 6
 - Firebase 
 
 <br>
@@ -21,9 +22,9 @@ Tasklist and Calendar app made with React Native
 
 This project demands some environment variables.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+First, you will need to install the packages in `package.json` using your preferred package manager (I'm using *yarn*).  
 
-To start Metro, run the following command from the _root_ of your React Native project:
+To start **Metro**, the JavaScript _bundler_ that ships _with_ React Native, run the following command from the _root_ of your React Native project:
 
 ```bash
 yarn start

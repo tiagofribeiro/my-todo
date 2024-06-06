@@ -10,6 +10,7 @@ const BodyText = styled.Text`
 
 const ButtonText = styled.Text`
     font-family: Archivo-Semibold;
+    font-size: 16px;
 `;
 
 //
@@ -26,8 +27,4 @@ const Body2 = styled(BodyText)`
     font-size: 14px;
 `;
 
-const Button1 = styled(ButtonText)`
-    font-size: 16px;
-`;
-
-export { Header3, Body1, Body2 }
+export { Header3, Body1, Body2, ButtonText }

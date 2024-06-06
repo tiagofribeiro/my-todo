@@ -1,8 +1,8 @@
-import { Body1, Body2, Header3 } from "./styles";
+import { Body1, Body2, ButtonText, Header3 } from "./styles";
 
 type AtomTextType = {
-    size: 'h3' | 'body1' | 'body2',
-    value: string,
+    size: 'h3' | 'body1' | 'body2' | 'button';
+    value: string;
 }
 
 const AtomText = ({ size, value }: AtomTextType) => {
@@ -19,8 +19,12 @@ const AtomText = ({ size, value }: AtomTextType) => {
             <Body2>
                 {value}
             </Body2>,
+        'button':
+            <ButtonText>
+                {value}
+            </ButtonText>
     }
-    
+
     return sizes[size];
 }
 

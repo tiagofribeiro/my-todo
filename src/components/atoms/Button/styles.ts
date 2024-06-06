@@ -11,4 +11,8 @@ const Touchable = styled.TouchableOpacity`
     background-color: #03665E;
 `;
 
-export { Touchable }
+const Content = styled.View`
+    align-items: center;
+`;
+
+export { Touchable, Content }

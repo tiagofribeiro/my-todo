@@ -4,28 +4,26 @@ import { Area, Content } from "./styles";
 import Text from "../../../components/atoms/Text";
 import Input from "../../../components/atoms/Input";
 import Button from "../../../components/atoms/Button";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackType } from "../../../navigation/root";
 
-const LoginView = ({ navigation }: NativeStackScreenProps<RootStackType, 'Login'>) => {
-    return (
+const PasswordView = () => {
+    return ( 
         <Area>
             <Content>
                 <View style={{ marginBottom: 40, rowGap: 8 }}>
                     <Text
                         size={'h3'}
-                        value={'Olá, vamos começar!'}
+                        value={'Que bom que voltou!'}
                     />
                     <Text
                         size={'body2'}
-                        value={'Acesse sua conta ou cadastre-se para continuar'}
+                        value={'Digite sua senha para prosseguir'}
                     />
                 </View>
-                <Input placeholder={'Insira seu e-mail'} />
-                <Button label={'continuar →'} press={() => navigation.navigate('Password')} />
+                <Input placeholder={'Insira sua senha'} />
+                <Button label={'acessar →'} />
             </Content>
         </Area>
-    );
+     );
 }
-
-export default LoginView;
+ 
+export default PasswordView;

@@ -1,13 +1,17 @@
-import { Text, View } from "react-native";
+import { Content, Touchable } from "./styles"
+import Text from "../Text";
 
-import { Touchable } from "./styles"
+type AtomButtonType = {
+    label: string;
+    press?: () => void;
+}
 
-const AtomButton = () => {
+const AtomButton = ({ label, press }: AtomButtonType) => {
     return (
-        <Touchable onPress={() => console.log("Eba")} >
-            <View>
-                <Text>botão →</Text>
-            </View>
+        <Touchable onPress={press} >
+            <Content>
+                <Text size={'button'} value={label} />
+            </Content>
         </Touchable>
     );
 }
