@@ -11,12 +11,14 @@ const BodyText = styled.Text`
 const ButtonText = styled.Text`
     font-family: Archivo-Semibold;
     font-size: 16px;
+    line-height: 20px;
 `;
 
 //
 
 const Header3 = styled(HeaderText)`
     font-size: 20px;
+    color: white;
 `;
 
 const Body1 = styled(BodyText)`

@@ -12,7 +12,7 @@ const Touchable = styled.TouchableOpacity`
 `;
 
 const Content = styled.View`
-    align-items: center;
+    
 `;
 
 export { Touchable, Content }

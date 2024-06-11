@@ -1,22 +1,19 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import LoginView from "../screens/auth/LoginView";
-import PasswordView from "../screens/auth/PasswordView";
 
-export type RootStackType = {
-    Login: undefined,
-    Password?: undefined,
-}
+import { RootStackType } from "./types";
+import AuthStack from "./auth";
 
 const Root = createNativeStackNavigator<RootStackType>();
 
 const RootStack = () => {
     return (
         <Root.Navigator
-            initialRouteName={'Login'}
-            screenOptions={{ headerShown: false }}
+            initialRouteName={'Auth'}
+            screenOptions={{
+                headerShown: false
+            }}
         >
-            <Root.Screen name={'Login'} component={LoginView} />
-            <Root.Screen name={'Password'} component={PasswordView} />
+            <Root.Screen name={'Auth'} component={AuthStack} />
         </Root.Navigator>
     );
 }

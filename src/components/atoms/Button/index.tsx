@@ -3,7 +3,7 @@ import Text from "../Text";
 
 type AtomButtonType = {
     label: string;
-    press?: () => void;
+    press?: () => any;
 }
 
 const AtomButton = ({ label, press }: AtomButtonType) => {

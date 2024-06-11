@@ -3,27 +3,21 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
+import AppTemplate from './src/components/templates/AppTemplate';
 import RootStack from './src/navigation/root';
 
 const App = (): React.JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#D8CCC3', height: '100%' }}>
-      <StatusBar
-        translucent
-        barStyle={'dark-content'}
-        backgroundColor={'transparent'}
-      />
-      {/*  */}
+    <AppTemplate>
       <NavigationContainer>
         <RootStack />
       </NavigationContainer>
-      {/*  */}
-    </SafeAreaView>
+    </AppTemplate>
   );
 }
 

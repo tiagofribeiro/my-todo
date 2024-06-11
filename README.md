@@ -12,8 +12,11 @@ Tasklist and Calendar app made with React Native
 - React 18
 - React Native 0.74
 - Typescript
-- Styled-Components 6
+- Context
 - React Navigation 6
+- Styled-Components 6
+- Reanimated 3
+- Gesture Handler 2
 - Firebase 
 
 <br>

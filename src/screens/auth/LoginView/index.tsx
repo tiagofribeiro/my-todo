@@ -1,17 +1,21 @@
+import { useRef } from "react";
 import { View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-import { Area, Content } from "./styles";
+import { Area } from "./styles";
 import Text from "../../../components/atoms/Text";
 import Input from "../../../components/atoms/Input";
 import Button from "../../../components/atoms/Button";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackType } from "../../../navigation/root";
+import Drawer, { AtomDrawerRef } from "../../../components/atoms/Drawer";
+import { AuthStackType } from "../../../navigation/types";
 
-const LoginView = ({ navigation }: NativeStackScreenProps<RootStackType, 'Login'>) => {
+const LoginView = ({ navigation }: NativeStackScreenProps<AuthStackType, 'Login'>) => {
+    const drawerRef = useRef<AtomDrawerRef>(null);
+
     return (
         <Area>
-            <Content>
-                <View style={{ marginBottom: 40, rowGap: 8 }}>
+            <Drawer ref={drawerRef}>
+                <View style={{flex: 1, justifyContent: 'center', marginBottom: 40, rowGap: 8 }}>
                     <Text
                         size={'h3'}
                         value={'Olá, vamos começar!'}
@@ -20,10 +24,10 @@ const LoginView = ({ navigation }: NativeStackScreenProps<RootStackType, 'Login'
                         size={'body2'}
                         value={'Acesse sua conta ou cadastre-se para continuar'}
                     />
+                    <Input placeholder={'Insira seu e-mail'} />
+                    <Button label={'continuar →'} press={() => navigation.navigate('Register')} />
                 </View>
-                <Input placeholder={'Insira seu e-mail'} />
-                <Button label={'continuar →'} press={() => navigation.navigate('Password')} />
-            </Content>
+            </Drawer>
         </Area>
     );
 }
