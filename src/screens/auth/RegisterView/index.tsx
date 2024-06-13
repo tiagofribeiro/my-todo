@@ -1,26 +1,49 @@
-import { View } from "react-native";
+import { useContext, useEffect, useRef } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
+import { Content, Form, Title } from "./styles";
 import Text from "../../../components/atoms/Text";
 import Input from "../../../components/atoms/Input";
 import Button from "../../../components/atoms/Button";
-import { AuthStackType } from "../../../navigation/types";
+import Drawer from "../../../components/atoms/Drawer";
+import { AuthStackProps, AuthStackType } from "../../../navigation/types";
+import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
+import { AppContext } from "../../../context/app";
+import { StatusBar } from "react-native";
 
-const RegisterView = ({ navigation }: NativeStackScreenProps<AuthStackType, 'Register'>) => {
+const RegisterView = ({ navigation }: AuthStackProps<'Register'>) => {
+    const appContext = useContext(AppContext);
+    const drawerRef = useRef<AtomDrawerRef>(null);
+
+    useEffect(() => {
+        drawerRef.current?.scrollTo(appContext.drawerY);
+    }, [appContext.drawerY])
+
     return (
-        <View style={{ height: 'auto', marginBottom: 40, rowGap: 8 }}>
-            <Text
-                size={'h3'}
-                value={'Perfeito!'}
+        <Drawer ref={drawerRef}>
+            <StatusBar
+                translucent={true}
+                barStyle={'dark-content'}
+                backgroundColor={'transparent'}
             />
-            <Text
-                size={'body2'}
-                value={'Agora crie uma senha para prosseguir'}
-            />
-            <Input placeholder={'Crie uma senha'} />
-            <Input placeholder={'Repita sua senha'} />
-            <Button label={'continuar →'} press={() => console.log('registrado!')} />
-        </View>
+            <Content>
+                <Title>
+                    <Text
+                        size={'h3'}
+                        value={'Perfeito!'}
+                    />
+                    <Text
+                        size={'body2'}
+                        value={'Agora crie uma senha para prosseguir'}
+                    />
+                </Title>
+                <Form>
+                    <Input placeholder={'Crie uma senha'} />
+                    <Input placeholder={'Repita sua senha'} />
+                    <Button label={'criar conta →'} press={() => navigation.goBack()} />
+                </Form>
+            </Content>
+        </Drawer>
     );
 }
 

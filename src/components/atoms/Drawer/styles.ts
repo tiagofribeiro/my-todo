@@ -7,14 +7,12 @@ type ContentType = {
 
 const Content = styled(Animated.View)<ContentType>(
     ({ $windowHeight }) => `
-        height: ${$windowHeight}px;
-        width: 100%;
-        position: absolute;
-        top: ${$windowHeight}px;
+        flex: 1;
         padding: 24px;
         border-top-left-radius: 26px;
         border-top-right-radius: 26px;
         background-color: #1E1B19;
-`);
+    `
+);
 
 export { Content }

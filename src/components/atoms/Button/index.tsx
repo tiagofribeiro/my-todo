@@ -1,17 +1,11 @@
-import { Content, Touchable } from "./styles"
+import { Touchable } from "./styles"
+import { AtomButtonType } from "./types";
 import Text from "../Text";
-
-type AtomButtonType = {
-    label: string;
-    press?: () => any;
-}
 
 const AtomButton = ({ label, press }: AtomButtonType) => {
     return (
         <Touchable onPress={press} >
-            <Content>
-                <Text size={'button'} value={label} />
-            </Content>
+            <Text size={'button'} value={label} />
         </Touchable>
     );
 }

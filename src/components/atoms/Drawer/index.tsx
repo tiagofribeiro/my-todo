@@ -1,28 +1,27 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle } from "react";
-import { useWindowDimensions } from "react-native";
+import { StatusBar, useWindowDimensions } from "react-native";
 import { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 import { Content } from "./styles";
+import { AtomDrawerRef, AtomDrawerType } from "./types";
 
-type AtomDrawerType = {
-    children: JSX.Element;
-}
-
-export type AtomDrawerRef = {
-    scrollTo: (position: number) => void;
-}
-
-const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ children }, ref) => {
+const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ tag, children }, ref) => {
     const { height: WINDOW_HEIGHT } = useWindowDimensions();
 
     const translateY = useSharedValue(0);
     const positionY = useSharedValue(0);
 
+    const currentY = useCallback(() => {
+        'worklet';
+        return translateY.value;
+    }, [])
+
     const scrollTo = useCallback((destination: number) => {
         'worklet';
         translateY.value = withSpring(destination, { damping: 20 });
     }, [])
+
 
     const gesture = Gesture.Pan()
         .onStart(() => {
@@ -30,7 +29,9 @@ const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ children }, ref)
         })
         .onUpdate((event) => {
             translateY.value = event.translationY + positionY.value;
-            translateY.value = Math.max(translateY.value, -WINDOW_HEIGHT + 50);
+
+            translateY.value = Math.max(translateY.value, WINDOW_HEIGHT / 10);
+            translateY.value = Math.min(translateY.value, WINDOW_HEIGHT / 2.2);
         });
 
     const animatedStyle = useAnimatedStyle(() => {
@@ -39,16 +40,15 @@ const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ children }, ref)
         };
     });
 
-    
-    useImperativeHandle(ref, () => ({ scrollTo }), [scrollTo])
+    useImperativeHandle(ref, () => ({ currentY, scrollTo }), [currentY, scrollTo])
 
     useEffect(() => {
-        scrollTo(-WINDOW_HEIGHT / 1.5)
+        scrollTo(WINDOW_HEIGHT / 3)
     }, [])
 
     return (
         <GestureDetector gesture={gesture}>
-            <Content $windowHeight={WINDOW_HEIGHT} style={animatedStyle}>
+            <Content $windowHeight={WINDOW_HEIGHT} style={animatedStyle} sharedTransitionTag={tag}>
                 {children}
             </Content>
         </GestureDetector>

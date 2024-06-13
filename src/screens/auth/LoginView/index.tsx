@@ -1,32 +1,74 @@
-import { useRef } from "react";
-import { View } from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { useContext, useRef, useState } from "react";
+import { StatusBar } from "react-native";
+import { SlideInRight, SlideOutLeft, useAnimatedKeyboard } from "react-native-reanimated";
 
-import { Area } from "./styles";
-import Text from "../../../components/atoms/Text";
-import Input from "../../../components/atoms/Input";
-import Button from "../../../components/atoms/Button";
-import Drawer, { AtomDrawerRef } from "../../../components/atoms/Drawer";
-import { AuthStackType } from "../../../navigation/types";
+import Drawer from "../../../components/atoms/Drawer";
+import Area from "../../../components/atoms/Area";
+import LoginTemplate from "../../../components/templates/LoginTemplate";
+import { AuthStackProps } from "../../../navigation/types";
+import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
+import { AppContext } from "../../../context/app";
 
-const LoginView = ({ navigation }: NativeStackScreenProps<AuthStackType, 'Login'>) => {
+const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
+    const appContext = useContext(AppContext);
     const drawerRef = useRef<AtomDrawerRef>(null);
+    const keyboard = useAnimatedKeyboard();
+
+    const [validEmail, setValidEmai] = useState(false);
+
+    const forms = {
+        email: {
+            fields: [
+                { placeholder: "Insira seu e-mail" }
+            ],
+            submit: {
+                label: "continuar →",
+                press: () => handlePress()
+            }
+        },
+        password: {
+            fields: [
+                { placeholder: "Insira sua senha" }
+            ],
+            submit: {
+                label: "acessar →",
+                press: () => handlePress()
+            }
+        }
+    }
+
+    const handlePress = () => {
+        setValidEmai(!validEmail);
+        // appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
+        // navigation.navigate("Register");
+    };
 
     return (
         <Area>
             <Drawer ref={drawerRef}>
-                <View style={{flex: 1, justifyContent: 'center', marginBottom: 40, rowGap: 8 }}>
-                    <Text
-                        size={'h3'}
-                        value={'Olá, vamos começar!'}
+                <StatusBar
+                    translucent={true}
+                    barStyle={"dark-content"}
+                    backgroundColor={"transparent"}
+                />
+                {!validEmail &&
+                    <LoginTemplate
+                        title={"Olá, vamos começar!"}
+                        subtitle={"Acesse sua conta ou cadastre-se para continuar"}
+                        form={forms.email}
+                        entering={SlideInRight}
+                        exiting={SlideOutLeft}
                     />
-                    <Text
-                        size={'body2'}
-                        value={'Acesse sua conta ou cadastre-se para continuar'}
+                }
+                {validEmail &&
+                    <LoginTemplate
+                        title={"Que bom que voltou!"}
+                        subtitle={"Digite sua senha para prosseguir"}
+                        form={forms.password}
+                        entering={SlideInRight}
+                        exiting={SlideOutLeft}
                     />
-                    <Input placeholder={'Insira seu e-mail'} />
-                    <Button label={'continuar →'} press={() => navigation.navigate('Register')} />
-                </View>
+                }
             </Drawer>
         </Area>
     );

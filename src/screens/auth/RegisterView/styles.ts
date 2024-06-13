@@ -1,4 +1,3 @@
-import { EdgeInsets } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 
 const Content = styled.View`
@@ -9,4 +8,8 @@ const Content = styled.View`
 
 const Title = styled.View``;
 
-export { Content, Title }
+const Form = styled.View`
+    row-gap: 16px;
+`;
+
+export { Content, Title, Form }

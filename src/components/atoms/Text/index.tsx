@@ -1,9 +1,5 @@
 import { Body1, Body2, ButtonText, Header3 } from "./styles";
-
-type AtomTextType = {
-    size: 'h3' | 'body1' | 'body2' | 'button';
-    value: string;
-}
+import { AtomTextType } from "./types";
 
 const AtomText = ({ size, value }: AtomTextType) => {
     const sizes = {

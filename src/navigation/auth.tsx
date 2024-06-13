@@ -11,7 +11,8 @@ const AuthStack = () => {
         <Auth.Navigator
             initialRouteName={'Login'}
             screenOptions={{
-                headerShown: false
+                headerShown: false,
+                animation: "slide_from_right",
             }}
         >
             <Auth.Screen name={'Login'} component={LoginView} />
