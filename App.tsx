@@ -14,7 +14,7 @@ const App = (): React.JSX.Element => {
   return (
     <AppTemplate>
       <RootStack />
-    </AppTemplate >
+    </AppTemplate>
   );
 }
 

@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { StatusBar } from "react-native";
-import { SlideInRight, SlideOutLeft, useAnimatedKeyboard } from "react-native-reanimated";
+import { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 
 import Drawer from "../../../components/atoms/Drawer";
 import Area from "../../../components/atoms/Area";
@@ -12,9 +12,25 @@ import { AppContext } from "../../../context/app";
 const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
     const appContext = useContext(AppContext);
     const drawerRef = useRef<AtomDrawerRef>(null);
-    const keyboard = useAnimatedKeyboard();
 
-    const [validEmail, setValidEmai] = useState(false);
+    const [validEmail, setValidEmail] = useState(false);
+
+    const handleContinue = () => {
+        setValidEmail(true);
+    };
+    
+    const handleBack = () => {
+        setValidEmail(false);
+    }
+    
+    const handleFinish = () => {
+        appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
+        navigation.navigate("Register");
+    }
+    
+    const animations = {
+
+    }
 
     const forms = {
         email: {
@@ -23,7 +39,7 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
             ],
             submit: {
                 label: "continuar →",
-                press: () => handlePress()
+                press: handleContinue
             }
         },
         password: {
@@ -32,16 +48,10 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
             ],
             submit: {
                 label: "acessar →",
-                press: () => handlePress()
+                press: handleFinish
             }
         }
     }
-
-    const handlePress = () => {
-        setValidEmai(!validEmail);
-        // appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
-        // navigation.navigate("Register");
-    };
 
     return (
         <Area>
@@ -62,6 +72,8 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
                 }
                 {validEmail &&
                     <LoginTemplate
+                        back
+                        backFunction={handleBack}
                         title={"Que bom que voltou!"}
                         subtitle={"Digite sua senha para prosseguir"}
                         form={forms.password}

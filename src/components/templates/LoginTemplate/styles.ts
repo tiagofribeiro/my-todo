@@ -3,10 +3,11 @@ import styled from "styled-components/native";
 
 const Area = styled(Animated.View)`
     flex: 1;
-    row-gap: 40;
-    margin-top: 120px;
+    row-gap: 40px;
 `;
 
-const Title = styled.View``;
+const Title = styled.View`
+        margin-top: 88px;
+`;
 
 export { Area, Title }

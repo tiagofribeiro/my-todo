@@ -3,6 +3,8 @@ import { SlideInLeft, SlideInRight, SlideInUp, SlideOutDown, SlideOutLeft, Slide
 import { FormType } from "../../organisms/Form/types";
 
 export type LoginTemplateType = {
+    back?: boolean;
+    backFunction?: () => void;
     title: string;
     subtitle: string;
     form: FormType;
