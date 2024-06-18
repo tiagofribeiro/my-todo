@@ -1,7 +1,7 @@
 import { Area } from "./styles";
+import { BackButtonType } from "./types";
 import Button from "../../atoms/Button";
 import ArrowLeft from "../../../../assets/icons/arrow-left.svg";
-import { BackButtonType } from "./types";
 
 const icon = {
     svg: ArrowLeft,
@@ -12,6 +12,7 @@ const BackButton = ({ backFunction }: BackButtonType) => {
     return (
         <Area>
             <Button
+                center
                 transparent
                 label={'voltar'}
                 icon={icon}

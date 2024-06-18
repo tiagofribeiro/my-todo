@@ -4,7 +4,7 @@ import Text from "../../atoms/Text";
 import BackButton from "../../molecules/BackButton";
 import Form from "../../organisms/Form";
 
-const LoginTemplate = ({
+const AuthTemplate = ({
     back = false,
     backFunction = () => {},
     title,
@@ -23,9 +23,9 @@ const LoginTemplate = ({
                 <Text size={"h3"} value={title} />
                 <Text size={"body2"} value={subtitle} />
             </Title>
-            <Form fields={form.fields} submit={form.submit} />
+            <Form fields={form.fields} submit={form.submit} forgot={form.forgot} />
         </Area>
     );
 }
 
-export default LoginTemplate;
+export default AuthTemplate;

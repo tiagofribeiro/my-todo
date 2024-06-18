@@ -1,6 +1,6 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle } from "react";
 import { StatusBar, useWindowDimensions } from "react-native";
-import { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
+import { SlideInDown, useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 import { Content } from "./styles";
@@ -19,7 +19,7 @@ const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ tag, children },
 
     const scrollTo = useCallback((destination: number) => {
         'worklet';
-        translateY.value = withSpring(destination, { damping: 20 });
+        translateY.value = withSpring(destination, { damping: 50, stiffness: 70 });
     }, [])
 
 
@@ -43,12 +43,16 @@ const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ tag, children },
     useImperativeHandle(ref, () => ({ currentY, scrollTo }), [currentY, scrollTo])
 
     useEffect(() => {
-        scrollTo(WINDOW_HEIGHT / 3)
+        scrollTo(WINDOW_HEIGHT / 4);
     }, [])
 
     return (
         <GestureDetector gesture={gesture}>
-            <Content $windowHeight={WINDOW_HEIGHT} style={animatedStyle} sharedTransitionTag={tag}>
+            <Content
+                $windowHeight={WINDOW_HEIGHT}
+                style={animatedStyle}
+                entering={SlideInDown.duration(400)}
+            >
                 {children}
             </Content>
         </GestureDetector>

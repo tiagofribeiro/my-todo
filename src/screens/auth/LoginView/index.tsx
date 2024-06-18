@@ -1,13 +1,13 @@
 import { useContext, useRef, useState } from "react";
 import { StatusBar } from "react-native";
-import { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 
-import Drawer from "../../../components/atoms/Drawer";
 import Area from "../../../components/atoms/Area";
-import LoginTemplate from "../../../components/templates/LoginTemplate";
+import Drawer from "../../../components/atoms/Drawer";
+import AuthTemplate from "../../../components/templates/AuthTemplate";
 import { AuthStackProps } from "../../../navigation/types";
 import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
 import { AppContext } from "../../../context/app";
+import { TransitionLeftAnimation, TransitionRightAnimation } from "../../../utils/global/animations";
 
 const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
     const appContext = useContext(AppContext);
@@ -18,22 +18,23 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
     const handleContinue = () => {
         setValidEmail(true);
     };
-    
+
     const handleBack = () => {
         setValidEmail(false);
     }
-    
+
     const handleFinish = () => {
         appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
-        navigation.navigate("Register");
+        navigation.navigate("Confirmation");
     }
-    
-    const animations = {
 
+    const handleForgot = () => {
+        appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
+        navigation.navigate("ForgotPassword");
     }
 
     const forms = {
-        email: {
+        EMAIL: {
             fields: [
                 { placeholder: "Insira seu e-mail" }
             ],
@@ -42,14 +43,15 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
                 press: handleContinue
             }
         },
-        password: {
+        PASSWORD: {
             fields: [
                 { placeholder: "Insira sua senha" }
             ],
             submit: {
                 label: "acessar →",
                 press: handleFinish
-            }
+            },
+            forgot: handleForgot,
         }
     }
 
@@ -62,23 +64,23 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
                     backgroundColor={"transparent"}
                 />
                 {!validEmail &&
-                    <LoginTemplate
+                    <AuthTemplate
                         title={"Olá, vamos começar!"}
                         subtitle={"Acesse sua conta ou cadastre-se para continuar"}
-                        form={forms.email}
-                        entering={SlideInRight}
-                        exiting={SlideOutLeft}
+                        form={forms.EMAIL}
+                        entering={TransitionLeftAnimation.entering}
+                        exiting={TransitionRightAnimation.exiting}
                     />
                 }
                 {validEmail &&
-                    <LoginTemplate
+                    <AuthTemplate
                         back
                         backFunction={handleBack}
                         title={"Que bom que voltou!"}
                         subtitle={"Digite sua senha para prosseguir"}
-                        form={forms.password}
-                        entering={SlideInRight}
-                        exiting={SlideOutLeft}
+                        form={forms.PASSWORD}
+                        entering={TransitionRightAnimation.entering}
+                        exiting={TransitionLeftAnimation.exiting}
                     />
                 }
             </Drawer>

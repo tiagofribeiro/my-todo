@@ -8,7 +8,7 @@ import { AuthStackProps } from "../../../navigation/types";
 import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
 import { AppContext } from "../../../context/app";
 
-const RegisterView = ({ navigation }: AuthStackProps<'Register'>) => {
+const ForgotPasswordView = ({ navigation }: AuthStackProps<'ForgotPassword'>) => {
     const appContext = useContext(AppContext);
     const drawerRef = useRef<AtomDrawerRef>(null);
 
@@ -21,13 +21,13 @@ const RegisterView = ({ navigation }: AuthStackProps<'Register'>) => {
     }
 
     const form = {
-        NEW_PASSWORD: {
+        FORGOT_PASSWORD: {
             fields: [
-                { placeholder: "Crie uma senha" },
-                { placeholder: "Repita sua senha" },
+                { placeholder: "Crie uma nova senha" },
+                { placeholder: "Repita sua nova senha" },
             ],
             submit: {
-                label: "criar conta →",
+                label: "criar nova senha →",
                 press: handleContinue
             }
         }
@@ -48,13 +48,13 @@ const RegisterView = ({ navigation }: AuthStackProps<'Register'>) => {
                 <AuthTemplate
                     back
                     backFunction={handleBack}
-                    title={"Perfeito!"}
-                    subtitle={"Agora crie sua senha para prosseguir"}
-                    form={form.NEW_PASSWORD}
+                    title={"Crie uma nova senha"}
+                    subtitle={"Essa será sua nova senha a partir de agora"}
+                    form={form.FORGOT_PASSWORD}
                 />
             </Drawer>
         </Area>
     );
 }
 
-export default RegisterView;
+export default ForgotPasswordView;

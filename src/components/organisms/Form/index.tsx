@@ -3,7 +3,11 @@ import { FormType } from "./types";
 import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
 
-const Form = ({ fields, submit }: FormType) => {
+const Form = ({
+    fields,
+    submit,
+    forgot,
+}: FormType) => {
     return (
         <Area>
             {fields.map((field, index) => {
@@ -16,6 +20,14 @@ const Form = ({ fields, submit }: FormType) => {
                 )
             })}
             <Button label={submit.label} press={submit.press} />
+            {forgot &&
+                <Button
+                    transparent
+                    marginY={8}
+                    label={'esqueceu sua senha?'}
+                    press={forgot}
+                />
+            }
         </Area>
     );
 }

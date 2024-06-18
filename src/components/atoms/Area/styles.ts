@@ -14,4 +14,11 @@ const Area = styled.View<AreaType>(
         paddingRight: ${$insets.right.toFixed()}px;
 `);
 
-export { Area }
+const BackLogo = styled.View`
+    width: 100%;
+    align-items: center;
+    position: absolute;
+    top: 80px;
+`;
+
+export { Area, BackLogo }

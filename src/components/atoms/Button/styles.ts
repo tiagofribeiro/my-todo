@@ -1,16 +1,19 @@
 import styled from "styled-components/native";
 
 type TouchableType = {
+    $center?: boolean;
     $transparent: boolean;
+    $marginY?: number;
 }
 
 const Touchable = styled.TouchableOpacity<TouchableType>(
-    ({ $transparent = false }) => `
+    ({ $center = false, $transparent = false, $marginY }) => `
         flex-direction: row;
         column-gap: 8px;
         height: 48px;
         padding: 10px 24px;
-        align-self: ${$transparent ? `center` : `stretch`};
+        margin-vertical: ${$marginY ? $marginY : 0}px;
+        align-self: ${$center ? `center` : `stretch`};
         align-items: center;
         justify-content: center;
         border-radius: 10px;

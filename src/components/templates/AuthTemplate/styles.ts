@@ -7,7 +7,7 @@ const Area = styled(Animated.View)`
 `;
 
 const Title = styled.View`
-        margin-top: 88px;
+    margin-top: 88px;
 `;
 
 export { Area, Title }

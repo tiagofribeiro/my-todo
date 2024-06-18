@@ -8,12 +8,13 @@ import { AuthStackProps } from "../../../navigation/types";
 import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
 import { AppContext } from "../../../context/app";
 
-const RegisterView = ({ navigation }: AuthStackProps<'Register'>) => {
+const ConfirmationView = ({ navigation }: AuthStackProps<'Confirmation'>) => {
     const appContext = useContext(AppContext);
     const drawerRef = useRef<AtomDrawerRef>(null);
 
     const handleContinue = () => {
-        console.log("Continuar");
+        appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
+        navigation.navigate("Register");
     };
 
     const handleBack = () => {
@@ -23,11 +24,10 @@ const RegisterView = ({ navigation }: AuthStackProps<'Register'>) => {
     const form = {
         NEW_PASSWORD: {
             fields: [
-                { placeholder: "Crie uma senha" },
-                { placeholder: "Repita sua senha" },
+                { placeholder: "- - - - - -" },
             ],
             submit: {
-                label: "criar conta →",
+                label: "continuar →",
                 press: handleContinue
             }
         }
@@ -48,8 +48,8 @@ const RegisterView = ({ navigation }: AuthStackProps<'Register'>) => {
                 <AuthTemplate
                     back
                     backFunction={handleBack}
-                    title={"Perfeito!"}
-                    subtitle={"Agora crie sua senha para prosseguir"}
+                    title={"Te enviamos um código"}
+                    subtitle={"Insira abaixo o código que foi enviado para o email ti********r@hotmail.com"}
                     form={form.NEW_PASSWORD}
                 />
             </Drawer>
@@ -57,4 +57,4 @@ const RegisterView = ({ navigation }: AuthStackProps<'Register'>) => {
     );
 }
 
-export default RegisterView;
+export default ConfirmationView;
