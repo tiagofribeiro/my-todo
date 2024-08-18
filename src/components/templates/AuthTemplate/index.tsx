@@ -3,6 +3,7 @@ import { LoginTemplateType } from "./types";
 import Text from "../../atoms/Text";
 import BackButton from "../../molecules/BackButton";
 import Form from "../../organisms/Form";
+import { WHITE_PALACE } from "../../../utils/global/colors";
 
 const AuthTemplate = ({
     back = false,
@@ -21,7 +22,7 @@ const AuthTemplate = ({
             }
             <Title>
                 <Text size={"h3"} value={title} />
-                <Text size={"body2"} value={subtitle} />
+                <Text size={"body2"} value={subtitle} color={WHITE_PALACE.dark}/>
             </Title>
             <Form fields={form.fields} submit={form.submit} forgot={form.forgot} />
         </Area>

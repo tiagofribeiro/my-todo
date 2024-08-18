@@ -1,13 +1,15 @@
-import { forwardRef, useCallback, useEffect, useImperativeHandle } from "react";
-import { StatusBar, useWindowDimensions } from "react-native";
-import { SlideInDown, useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
+import { forwardRef, useCallback, useContext, useEffect, useImperativeHandle } from "react";
+import { Keyboard, useWindowDimensions } from "react-native";
+import { SlideInDown, useAnimatedKeyboard, useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 import { Content } from "./styles";
 import { AtomDrawerRef, AtomDrawerType } from "./types";
+import { useAppContext } from "../../../context/app";
 
 const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ tag, children }, ref) => {
-    const { height: WINDOW_HEIGHT } = useWindowDimensions();
+    const { currentInputY, drawerY } = useAppContext();
+    const WINDOW_HEIGHT = useWindowDimensions().height;
 
     const translateY = useSharedValue(0);
     const positionY = useSharedValue(0);
@@ -19,7 +21,7 @@ const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ tag, children },
 
     const scrollTo = useCallback((destination: number) => {
         'worklet';
-        translateY.value = withSpring(destination, { damping: 50, stiffness: 70 });
+        translateY.value = withSpring(destination, { damping: 80, stiffness: 80 });
     }, [])
 
 
@@ -44,6 +46,26 @@ const AtomDrawer = forwardRef<AtomDrawerRef, AtomDrawerType>(({ tag, children },
 
     useEffect(() => {
         scrollTo(WINDOW_HEIGHT / 4);
+
+        const showSubscription = Keyboard.addListener('keyboardDidShow', (event) => {
+            const availableScreen = WINDOW_HEIGHT - event.endCoordinates.height;
+
+            console.log(currentInputY)
+
+            const a = drawerY - (currentInputY - event.endCoordinates.screenY + 100);
+
+            if (currentInputY > availableScreen) {
+                scrollTo(a)
+            }
+        });
+        const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+            // scrollTo(currentY() + 100)
+        });
+
+        return () => {
+            showSubscription.remove();
+            hideSubscription.remove();
+        };
     }, [])
 
     return (

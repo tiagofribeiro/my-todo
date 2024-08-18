@@ -4,25 +4,31 @@
 //     setStatusHeight(StatusBar.currentHeight ?? 20);
 // }, [statusHeight])
 
-import { createContext, useState } from "react";
-import { AppContextType, ProviderType } from "./types";
+import { createContext, useContext, useState } from "react";
+import { AppContextType } from "./types";
+import { ChildrenType } from "../utils/global/types";
 
 export const AppContext = createContext<AppContextType>({
     isLoading: false,
     setIsLoading: () => { },
     drawerY: 0,
     setDrawerY: () => { },
+    currentInputY: 0,
+    setCurrentInputY: () => { },
 });
 
-export const AppProvider = ({ children }: ProviderType) => {
+export const AppProvider = ({ children }: ChildrenType) => {
     const [isLoading, setIsLoading] = useState(false);
     const [drawerY, setDrawerY] = useState(0);
+    const [currentInputY, setCurrentInputY] = useState(0);
 
     const context = {
         isLoading,
         setIsLoading,
         drawerY,
         setDrawerY,
+        currentInputY,
+        setCurrentInputY,
     };
 
     return (
@@ -31,3 +37,13 @@ export const AppProvider = ({ children }: ProviderType) => {
         </AppContext.Provider>
     )
 };
+
+export const useAppContext = () => {
+    const context = useContext(AppContext);
+
+    if (!context) {
+    //   throw new Error('useCurrentY must be used within a CurrentYProvider');
+    }
+    
+    return context;
+  };

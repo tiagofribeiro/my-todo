@@ -1,12 +1,8 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 type SetStateType<T> = Dispatch<SetStateAction<T>>
 
 //
-
-export type ProviderType = {
-    children: ReactNode;
-}
 
 export type UserType = {
     email: string;
@@ -22,6 +18,8 @@ export type AppContextType = {
     setIsLoading: SetStateType<boolean>;
     drawerY: number;
     setDrawerY: SetStateType<number>;
+    currentInputY: number;
+    setCurrentInputY: SetStateType<number>;
 }
 
 export type AuthContextType = {

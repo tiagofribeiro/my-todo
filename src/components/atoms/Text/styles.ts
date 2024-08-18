@@ -1,24 +1,30 @@
 import styled from "styled-components/native";
 
-const HeaderText = styled.Text`
+type TextType = {
+    $color: string;
+}
+
+const HeaderText = styled.Text<TextType>(({ $color }) => `
     font-family: Archivo-ExtraBold;
-`;
+    color: ${$color};
+`);
 
-const BodyText = styled.Text`
+const BodyText = styled.Text<TextType>(({ $color }) => `
     font-family: Archivo-Regular;
-`;
+        color: ${$color};
+`);
 
-const ButtonText = styled.Text`
-    font-family: Archivo-Semibold;
+const ButtonText = styled.Text<TextType>(({ $color }) => `
+    font-family: Archivo-SemiBold;
     font-size: 16px;
     line-height: 20px;
-`;
+    color: ${$color};
+`);
 
 //
 
 const Header3 = styled(HeaderText)`
     font-size: 20px;
-    color: white;
 `;
 
 const Body1 = styled(BodyText)`
