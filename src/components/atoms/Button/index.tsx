@@ -1,6 +1,7 @@
 import { Touchable } from "./styles"
 import { AtomButtonType } from "./types";
 import Text from "../Text";
+import { WHITE_PALACE } from "../../../utils/global/colors";
 
 const AtomButton = ({
     center,
@@ -18,7 +19,7 @@ const AtomButton = ({
             onPress={press}
         >
             {icon &&
-                <icon.svg width={24} height={24} />
+                <icon.svg width={24} height={24} fill={WHITE_PALACE.light} />
             }
             <Text size={'button'} value={label} />
         </Touchable>

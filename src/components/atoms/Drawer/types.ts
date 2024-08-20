@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { ChildrenType } from "../../../utils/global/types";
 
 export type AtomDrawerRef = {

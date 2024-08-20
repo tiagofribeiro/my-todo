@@ -11,6 +11,8 @@ import { ChildrenType } from "../utils/global/types";
 export const AppContext = createContext<AppContextType>({
     isLoading: false,
     setIsLoading: () => { },
+    isAuthenticated: false,
+    setIsAuthenticated: () => {},
     drawerY: 0,
     setDrawerY: () => { },
     currentInputY: 0,
@@ -19,12 +21,15 @@ export const AppContext = createContext<AppContextType>({
 
 export const AppProvider = ({ children }: ChildrenType) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [drawerY, setDrawerY] = useState(0);
     const [currentInputY, setCurrentInputY] = useState(0);
 
     const context = {
         isLoading,
         setIsLoading,
+        isAuthenticated,
+        setIsAuthenticated,
         drawerY,
         setDrawerY,
         currentInputY,

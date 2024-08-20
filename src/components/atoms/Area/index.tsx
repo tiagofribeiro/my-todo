@@ -1,17 +1,19 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Area, BackLogo } from "./styles";
-import { ChildrenType } from "../../../utils/global/types";
 import Logo from "../../../../assets/logo.svg";
+import { AtomAreaType } from "./types";
 
-const AtomArea = ({ children }: ChildrenType) => {
+const AtomArea = ({ logo, children }: AtomAreaType) => {
     const insets = useSafeAreaInsets();
 
     return (
         <Area $insets={insets}>
-            <BackLogo>
-                <Logo />
-            </BackLogo>
+            {logo &&
+                <BackLogo>
+                    <Logo />
+                </BackLogo>
+            }
             {children}
         </Area>
     );

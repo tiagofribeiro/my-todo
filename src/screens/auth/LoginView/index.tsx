@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { StatusBar } from "react-native";
 
 import Area from "../../../components/atoms/Area";
@@ -6,11 +6,11 @@ import Drawer from "../../../components/atoms/Drawer";
 import AuthTemplate from "../../../components/templates/AuthTemplate";
 import { AuthStackProps } from "../../../navigation/types";
 import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
-import { AppContext } from "../../../context/app";
+import { useAppContext } from "../../../context/app";
 import { TransitionLeftAnimation, TransitionRightAnimation } from "../../../utils/global/animations";
 
 const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
-    const appContext = useContext(AppContext);
+    const { setDrawerY } = useAppContext();
     const drawerRef = useRef<AtomDrawerRef>(null);
 
     const [validEmail, setValidEmail] = useState(false);
@@ -24,12 +24,12 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
     }
 
     const handleFinish = () => {
-        appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
+        setDrawerY(drawerRef.current?.currentY() ?? 0);
         navigation.navigate("Confirmation");
     }
 
     const handleForgot = () => {
-        appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
+        setDrawerY(drawerRef.current?.currentY() ?? 0);
         navigation.navigate("ForgotPassword");
     }
 
@@ -39,7 +39,7 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
                 { placeholder: "Insira seu e-mail" }
             ],
             submit: {
-                label: "continuar →",
+                label: "continuar   →",
                 press: handleContinue
             }
         },
@@ -48,7 +48,7 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
                 { placeholder: "Insira sua senha" }
             ],
             submit: {
-                label: "acessar →",
+                label: "acessar   →",
                 press: handleFinish
             },
             forgot: handleForgot,
@@ -56,7 +56,7 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
     }
 
     return (
-        <Area>
+        <Area logo>
             <Drawer ref={drawerRef}>
                 <StatusBar
                     translucent={true}

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { StatusBar } from "react-native";
 
 import Area from "../../../components/atoms/Area";
@@ -6,14 +6,14 @@ import Drawer from "../../../components/atoms/Drawer";
 import AuthTemplate from "../../../components/templates/AuthTemplate";
 import { AuthStackProps } from "../../../navigation/types";
 import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
-import { AppContext } from "../../../context/app";
+import { useAppContext } from "../../../context/app";
 
 const ConfirmationView = ({ navigation }: AuthStackProps<'Confirmation'>) => {
-    const appContext = useContext(AppContext);
+    const { drawerY, setDrawerY } = useAppContext();
     const drawerRef = useRef<AtomDrawerRef>(null);
 
     const handleContinue = () => {
-        appContext.setDrawerY(drawerRef.current?.currentY() ?? 0);
+        setDrawerY(drawerRef.current?.currentY() ?? 0);
         navigation.navigate("Register");
     };
 
@@ -27,18 +27,18 @@ const ConfirmationView = ({ navigation }: AuthStackProps<'Confirmation'>) => {
                 { placeholder: "- - - - - -" },
             ],
             submit: {
-                label: "continuar →",
+                label: "continuar   →",
                 press: handleContinue
             }
         }
     }
 
     useEffect(() => {
-        drawerRef.current?.scrollTo(appContext.drawerY);
-    }, [appContext.drawerY])
+        drawerRef.current?.scrollTo(drawerY);
+    }, [drawerY])
 
     return (
-        <Area>
+        <Area logo>
             <Drawer ref={drawerRef}>
                 <StatusBar
                     translucent={true}

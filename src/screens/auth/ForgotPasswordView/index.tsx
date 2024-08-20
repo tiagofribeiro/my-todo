@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { StatusBar } from "react-native";
 
 import Area from "../../../components/atoms/Area";
@@ -6,10 +6,10 @@ import Drawer from "../../../components/atoms/Drawer";
 import AuthTemplate from "../../../components/templates/AuthTemplate";
 import { AuthStackProps } from "../../../navigation/types";
 import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
-import { AppContext } from "../../../context/app";
+import { useAppContext } from "../../../context/app";
 
 const ForgotPasswordView = ({ navigation }: AuthStackProps<'ForgotPassword'>) => {
-    const appContext = useContext(AppContext);
+    const { drawerY } = useAppContext();
     const drawerRef = useRef<AtomDrawerRef>(null);
 
     const handleContinue = () => {
@@ -27,18 +27,18 @@ const ForgotPasswordView = ({ navigation }: AuthStackProps<'ForgotPassword'>) =>
                 { placeholder: "Repita sua nova senha" },
             ],
             submit: {
-                label: "criar nova senha →",
+                label: "criar nova senha   →",
                 press: handleContinue
             }
         }
     }
 
     useEffect(() => {
-        drawerRef.current?.scrollTo(appContext.drawerY);
-    }, [appContext.drawerY])
+        drawerRef.current?.scrollTo(drawerY);
+    }, [drawerY])
 
     return (
-        <Area>
+        <Area logo>
             <Drawer ref={drawerRef}>
                 <StatusBar
                     translucent={true}

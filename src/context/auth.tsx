@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-import { AuthContextType, ProviderType } from "./types";
+import { AuthContextType } from "./types";
+import { ChildrenType } from "../utils/global/types";
 
 export const AuthContext = createContext<AuthContextType>({
     email: '',
@@ -10,7 +11,7 @@ export const AuthContext = createContext<AuthContextType>({
     setConfirmed: () => { },
 })
 
-export const AuthProvider = ({ children }: ProviderType) => {
+export const AuthProvider = ({ children }: ChildrenType) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmed, setConfirmed] = useState(false);

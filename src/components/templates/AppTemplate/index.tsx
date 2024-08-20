@@ -8,7 +8,12 @@ const AppTemplate = ({ children }: ChildrenType) => {
     return (
         <SafeArea>
             <AppProvider>
-                <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'transparent' }}>
+                <GestureHandlerRootView
+                    style={{
+                        flex: 1,
+                        backgroundColor: 'transparent'
+                    }}
+                >
                     {children}
                 </GestureHandlerRootView>
             </AppProvider>

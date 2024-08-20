@@ -5,6 +5,7 @@ import { RootStackType } from "./types";
 import AuthStack from "./auth";
 import MenuStack from "./menu";
 import { WHITE_PALACE } from "../utils/global/colors";
+import { useAppContext } from "../context/app";
 
 const Root = createNativeStackNavigator<RootStackType>();
 
@@ -21,18 +22,23 @@ const theme = {
 }
 
 const RootStack = () => {
+    const { isAuthenticated } = useAppContext();
+
     return (
         <NavigationContainer theme={theme}>
             <Root.Navigator
-                initialRouteName={'Auth'}
                 screenOptions={{
                     headerShown: false,
+                    animation: "slide_from_right",
                 }}
             >
-                <Root.Screen name={'Auth'} component={AuthStack} />
-                <Root.Screen name={'Menu'} component={MenuStack} />
+                {
+                    !isAuthenticated
+                        ? <Root.Screen name={'Auth'} component={AuthStack} />
+                        : <Root.Screen name={'Menu'} component={MenuStack} />
+                }
             </Root.Navigator>
-        </NavigationContainer>
+        </NavigationContainer >
     );
 }
 

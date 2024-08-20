@@ -11,7 +11,7 @@ const HeaderText = styled.Text<TextType>(({ $color }) => `
 
 const BodyText = styled.Text<TextType>(({ $color }) => `
     font-family: Archivo-Regular;
-        color: ${$color};
+    color: ${$color};
 `);
 
 const ButtonText = styled.Text<TextType>(({ $color }) => `

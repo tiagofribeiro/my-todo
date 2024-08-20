@@ -16,6 +16,8 @@ export type UserType = {
 export type AppContextType = {
     isLoading: boolean;
     setIsLoading: SetStateType<boolean>;
+    isAuthenticated: boolean;
+    setIsAuthenticated: SetStateType<boolean>;
     drawerY: number;
     setDrawerY: SetStateType<number>;
     currentInputY: number;

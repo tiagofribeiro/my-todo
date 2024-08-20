@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-import { ProviderType, UserContextType, UserType } from "./types";
+import { UserContextType, UserType } from "./types";
+import { ChildrenType } from "../utils/global/types";
 
 const emptyUser = {
     email: '',
@@ -13,7 +14,7 @@ export const UserContext = createContext<UserContextType>({
     setUser: () => { }
 })
 
-export const UserProvider = ({ children }: ProviderType) => {
+export const UserProvider = ({ children }: ChildrenType) => {
     const [user, setUser] = useState<UserType>(emptyUser);
 
     const context = {
