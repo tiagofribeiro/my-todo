@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import TabContent from "../components/molecules/TabContent";
 import TodayView from "../screens/menu/TodayView";
 import CalendarView from "../screens/menu/CalendarView";
 import AccountView from "../screens/menu/AccountView";
-import { ABYSS, MANTIS, WHITE_PALACE } from "../utils/global/colors";
+import { WHITE_PALACE } from "../utils/global/colors";
 
 import Smile from "../../assets/icons/smile-naruto.svg";
 import Calendar from "../../assets/icons/calendar-karma.svg";
@@ -12,6 +13,7 @@ import Profile from "../../assets/icons/profile-clone.svg";
 const Menu = createBottomTabNavigator();
 
 const theme = {
+    height: 78,
     paddingHorizontal: 8,
     backgroundColor: WHITE_PALACE.lightest,
 }
@@ -23,6 +25,7 @@ const MenuStack = () => {
             initialRouteName={'Today'}
             screenOptions={{
                 headerShown: false,
+                tabBarShowLabel: false,
                 tabBarStyle: theme,
             }}
         >
@@ -30,10 +33,8 @@ const MenuStack = () => {
                 name={'Today'}
                 component={TodayView}
                 options={{
-                    tabBarLabel: 'Hoje',
-                    tabBarActiveTintColor: MANTIS.darker,
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Smile fill={ABYSS.dark} />
+                    tabBarIcon: ({ focused }) => (
+                        <TabContent label={'Hoje'} icon={{ svg: Smile }} focused={focused} />
                     )
                 }}
             />
@@ -41,10 +42,8 @@ const MenuStack = () => {
                 name={'Calendar'}
                 component={CalendarView}
                 options={{
-                    tabBarLabel: 'Calendário',
-                    tabBarActiveTintColor: MANTIS.darker,
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Calendar fill={ABYSS.dark} />
+                    tabBarIcon: ({ focused }) => (
+                        <TabContent label={'Calendário'} icon={{ svg: Calendar }} focused={focused} />
                     )
                 }}
             />
@@ -52,10 +51,8 @@ const MenuStack = () => {
                 name={'Account'}
                 component={AccountView}
                 options={{
-                    tabBarLabel: 'Conta',
-                    tabBarActiveTintColor: MANTIS.darker,
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Profile fill={ABYSS.dark} />
+                    tabBarIcon: ({ focused }) => (
+                        <TabContent label={'Conta'} icon={{ svg: Profile }} focused={focused} />
                     )
                 }}
             />
