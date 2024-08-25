@@ -1,7 +1,7 @@
 import { Area } from "./styles";
 import { FormType } from "./types";
-import Button from "../../atoms/Button";
-import Input from "../../atoms/Input";
+import AtomButton from "../../atoms/Button";
+import AtomInput from "../../atoms/Input";
 
 const Form = ({
     fields,
@@ -12,16 +12,16 @@ const Form = ({
         <Area>
             {fields.map((field, index) => {
                 return (
-                    <Input
+                    <AtomInput
                         key={index}
                         placeholder={field.placeholder}
                         onFocus={field.onFocus}
                     />
                 )
             })}
-            <Button label={submit.label} press={submit.press} />
+            <AtomButton label={submit.label} press={submit.press} />
             {forgot &&
-                <Button
+                <AtomButton
                     transparent
                     marginY={8}
                     label={'esqueceu sua senha?'}

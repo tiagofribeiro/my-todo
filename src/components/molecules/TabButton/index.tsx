@@ -2,7 +2,8 @@ import { useAnimatedStyle, withTiming } from "react-native-reanimated";
 
 import { Content, Highlight, Touchable } from "./styles";
 import { TabContentType } from "./types";
-import Text from "../../atoms/Text";
+import AtomText from "../../atoms/Text";
+import { FontFamilies, FontSizes } from "../../atoms/Text/types";
 import { ABYSS, MANTIS } from "../../../utils/global/colors";
 
 const TabButton = ({
@@ -23,8 +24,9 @@ const TabButton = ({
                 <Highlight style={animatedStyle}>
                     <Icon fill={focused ? MANTIS.normal : ABYSS.dark} />
                 </Highlight>
-                <Text
-                    size={'body2'}
+                <AtomText
+                    size={FontSizes.BODY2}
+                    family={FontFamilies.SEMI}
                     value={label}
                     color={focused ? MANTIS.normal : ABYSS.dark}
                 />

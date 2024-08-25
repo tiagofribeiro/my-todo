@@ -1,13 +1,14 @@
 import { Area, Title } from "./styles";
 import { LoginTemplateType } from "./types";
-import Text from "../../atoms/Text";
+import AtomText from "../../atoms/Text";
+import { FontFamilies, FontSizes } from "../../atoms/Text/types";
 import BackButton from "../../molecules/BackButton";
 import Form from "../../organisms/Form";
 import { WHITE_PALACE } from "../../../utils/global/colors";
 
 const AuthTemplate = ({
     back = false,
-    backFunction = () => {},
+    backFunction = () => { },
     title,
     subtitle,
     form,
@@ -18,11 +19,19 @@ const AuthTemplate = ({
     return (
         <Area entering={entering} exiting={exiting}>
             {back &&
-                <BackButton backFunction={backFunction}/>
+                <BackButton backFunction={backFunction} />
             }
             <Title>
-                <Text size={"h3"} value={title} />
-                <Text size={"body2"} value={subtitle} color={WHITE_PALACE.dark}/>
+                <AtomText
+                    size={FontSizes.H1}
+                    family={FontFamilies.EXTRA}
+                    value={title}
+                />
+                <AtomText
+                    size={FontSizes.BODY1}
+                    value={subtitle}
+                    color={WHITE_PALACE.dark}
+                />
             </Title>
             <Form fields={form.fields} submit={form.submit} forgot={form.forgot} />
         </Area>

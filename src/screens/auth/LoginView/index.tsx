@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { StatusBar } from "react-native";
 
-import Area from "../../../components/atoms/Area";
-import Drawer from "../../../components/atoms/Drawer";
+import AtomArea from "../../../components/atoms/Area";
+import AtomDrawer from "../../../components/atoms/Drawer";
 import AuthTemplate from "../../../components/templates/AuthTemplate";
 import { AuthStackProps } from "../../../navigation/types";
 import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
@@ -56,8 +56,8 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
     }
 
     return (
-        <Area logo>
-            <Drawer ref={drawerRef}>
+        <AtomArea logo>
+            <AtomDrawer ref={drawerRef}>
                 <StatusBar
                     translucent={true}
                     barStyle={"dark-content"}
@@ -83,8 +83,8 @@ const LoginView = ({ navigation }: AuthStackProps<'Login'>) => {
                         exiting={TransitionLeftAnimation.exiting}
                     />
                 }
-            </Drawer>
-        </Area>
+            </AtomDrawer>
+        </AtomArea>
     );
 }
 

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import { StatusBar } from "react-native";
 
-import Area from "../../../components/atoms/Area";
-import Drawer from "../../../components/atoms/Drawer";
+import AtomArea from "../../../components/atoms/Area";
+import AtomDrawer from "../../../components/atoms/Drawer";
 import AuthTemplate from "../../../components/templates/AuthTemplate";
 import { AuthStackProps } from "../../../navigation/types";
 import { AtomDrawerRef } from "../../../components/atoms/Drawer/types";
@@ -38,8 +38,8 @@ const ForgotPasswordView = ({ navigation }: AuthStackProps<'ForgotPassword'>) =>
     }, [drawerY])
 
     return (
-        <Area logo>
-            <Drawer ref={drawerRef}>
+        <AtomArea logo>
+            <AtomDrawer ref={drawerRef}>
                 <StatusBar
                     translucent={true}
                     barStyle={"dark-content"}
@@ -52,8 +52,8 @@ const ForgotPasswordView = ({ navigation }: AuthStackProps<'ForgotPassword'>) =>
                     subtitle={"Essa será sua nova senha a partir de agora"}
                     form={form.FORGOT_PASSWORD}
                 />
-            </Drawer>
-        </Area>
+            </AtomDrawer>
+        </AtomArea>
     );
 }
 
