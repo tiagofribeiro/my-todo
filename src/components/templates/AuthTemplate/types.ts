@@ -1,4 +1,4 @@
-import { SlideInLeft, SlideInRight, SlideInUp, SlideOutDown, SlideOutLeft, SlideOutRight } from "react-native-reanimated";
+import { SlideInRight, SlideOutLeft } from "react-native-reanimated";
 
 import { FormType } from "../../organisms/Form/types";
 

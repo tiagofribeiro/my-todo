@@ -1,14 +1,13 @@
-import { Area, Section, Top } from "./styles";
+import { Area, Top } from "./styles";
 import { TodayTemplateType } from "./types";
 import AtomText from "../../atoms/Text";
-import { FontFamilies, FontSizes } from "../../atoms/Text/types";
+import Section from "../../organisms/Section";
+
 import { ABYSS } from "../../../utils/global/colors";
-import TaskList from "../../organisms/TaskList";
+import { FontFamilies, FontSizes } from '../../../utils/global/enums';
 
 const TodayTemplate = ({
     today,
-    quick,
-    general
 }: TodayTemplateType) => {
     return (
         <Area>
@@ -25,23 +24,21 @@ const TodayTemplate = ({
                     color={ABYSS.normal}
                 />
             </Top>
-            <Section>
-                <AtomText
-                    size={FontSizes.H2}
-                    family={FontFamilies.EXTRA}
-                    value={'Tarefas rápidas'}
-                    color={ABYSS.normal}
-                />
-                <TaskList />
-            </Section>
-            <Section>
-                <AtomText
-                    size={FontSizes.H2}
-                    family={FontFamilies.EXTRA}
-                    value={'Tarefas gerais'}
-                    color={ABYSS.normal}
-                />
-            </Section>
+            
+            <Section
+                title={'Tarefas Rápidas'}
+                list={[
+                    { title: 'lavar louça', done: false },
+                    { title: 'programar', done: false }
+                ]}
+            />
+            <Section
+                title={'Tarefas Gerais'}
+                list={[
+                    { title: 'upgrade pc', descr: 'comprar as peças', done: false },
+                    { title: 'curso docker', descr: 'tenho que fazer nmrl', done: false }
+                ]}
+            />
         </Area>
     );
 }

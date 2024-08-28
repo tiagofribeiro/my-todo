@@ -1,6 +1,8 @@
-import { AtomTextType, FontFamilies } from "./types";
+import { AtomTextType } from "./types";
 import { Text } from "./styles";
+
 import { WHITE_PALACE } from "../../../utils/global/colors";
+import { FontFamilies } from "../../../utils/global/enums";
 
 const AtomText = ({
     size,

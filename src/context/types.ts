@@ -1,6 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
-type SetStateType<T> = Dispatch<SetStateAction<T>>
+import { ReminderTypes } from "../utils/global/enums";
+
+type SetStateType<T> = Dispatch<SetStateAction<T>>;
+
+type SubTaskType = Pick<TaskType, 'title' | 'done'>;
+type QuickTaskType = Pick<TaskType, 'title' | 'date' | 'done'>;
 
 //
 
@@ -9,6 +14,19 @@ export type UserType = {
     password: string;
     name: string;
     confirmed: boolean;
+}
+
+export type TaskType = {
+    done: boolean;
+    title: string;
+    descr?: string;
+    date?: Date;
+    tags?: string[];
+    reminders?: {
+        value: number;
+        type: ReminderTypes;
+    }[],
+    subtasks?: SubTaskType[];
 }
 
 //
@@ -34,6 +52,13 @@ export type AuthContextType = {
 }
 
 export type UserContextType = {
-    user: UserType,
+    user: UserType;
     setUser: SetStateType<UserType>;
+}
+
+export type TaskContextType = {
+    tasks: TaskType[];
+    setTasks: SetStateType<TaskType[]>;
+    quickTasks: QuickTaskType[];
+    setQuickTasks: SetStateType<QuickTaskType[]>;
 }

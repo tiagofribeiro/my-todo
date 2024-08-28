@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-import { FontSizes, FontFamilies } from "./types";
+import { FontSizes, FontFamilies } from "../../../utils/global/enums";
 
 type TextType = {
     $size: FontSizes;

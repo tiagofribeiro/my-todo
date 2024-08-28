@@ -1,10 +1,11 @@
 import { Area, Title } from "./styles";
 import { LoginTemplateType } from "./types";
 import AtomText from "../../atoms/Text";
-import { FontFamilies, FontSizes } from "../../atoms/Text/types";
 import BackButton from "../../molecules/BackButton";
 import Form from "../../organisms/Form";
+
 import { WHITE_PALACE } from "../../../utils/global/colors";
+import { FontFamilies, FontSizes } from "../../../utils/global/enums";
 
 const AuthTemplate = ({
     back = false,

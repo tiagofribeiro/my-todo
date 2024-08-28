@@ -5,11 +5,7 @@ import { MenuStackProps } from "../../../navigation/types";
 const TodayView = ({ navigation }: MenuStackProps<'Today'>) => {
     return (
         <AtomArea>
-            <TodayTemplate
-                today={'Hoje'}
-                quick={['Lavar', 'Correr', 'Pular']}
-                general={['Projeto', 'Compras', 'Metas']}
-            />
+            <TodayTemplate today={'Hoje'} />
         </AtomArea>
     );
 }

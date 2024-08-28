@@ -3,8 +3,9 @@ import { useAnimatedStyle, withTiming } from "react-native-reanimated";
 import { Content, Highlight, Touchable } from "./styles";
 import { TabContentType } from "./types";
 import AtomText from "../../atoms/Text";
-import { FontFamilies, FontSizes } from "../../atoms/Text/types";
+
 import { ABYSS, MANTIS } from "../../../utils/global/colors";
+import { FontFamilies, FontSizes } from "../../../utils/global/enums";
 
 const TabButton = ({
     focused,
