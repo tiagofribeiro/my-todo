@@ -24,19 +24,19 @@ const TodayTemplate = ({
                     color={ABYSS.normal}
                 />
             </Top>
-            
+
             <Section
                 title={'Tarefas Rápidas'}
                 list={[
-                    { title: 'lavar louça', done: false },
-                    { title: 'programar', done: false }
+                    { title: 'Lavar louça', done: false },
+                    { title: 'Programar', done: false }
                 ]}
             />
             <Section
                 title={'Tarefas Gerais'}
                 list={[
-                    { title: 'upgrade pc', descr: 'comprar as peças', done: false },
-                    { title: 'curso docker', descr: 'tenho que fazer nmrl', done: false }
+                    { title: 'Upgrade pc', descr: 'comprar as peças tudo caro demais', done: false },
+                    { title: 'Curso docker', descr: 'tenho que fazer nmrl menor', done: false }
                 ]}
             />
         </Area>
