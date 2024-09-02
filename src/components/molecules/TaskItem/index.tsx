@@ -1,15 +1,24 @@
-import { Card, Content, Icon, List, Separator, Tag } from "./styles";
-import { TaskItemType, TaskListType } from "./types";
+import { Content, Icon, Deadline } from "./styles";
+import { TaskItemType } from "./types";
 import AtomText from "../../atoms/Text";
+import AtomCheck from "../../atoms/Check";
 
-import { FontFamilies, FontSizes } from "../../../utils/global/enums";
+import { FontFamilies, FontSizes, TagTypes } from "../../../utils/global/enums";
 import { ABYSS } from "../../../utils/global/colors";
+import { Tags } from "../../../utils/global/tags";
+import AtomCard from "../../atoms/Card";
 
 const TaskItem = ({ item }: TaskItemType) => {
+    const tag = item.tag ? Tags[item.tag] : Tags[TagTypes.DEFAULT];
+
     return (
-        <Card>
-            <Icon>
-                <AtomText value={'👽'} size={FontSizes.H1} family={FontFamilies.SEMI} />
+        <AtomCard>
+            <Icon $color={tag.color}>
+                <AtomText
+                    size={FontSizes.H1}
+                    family={FontFamilies.SEMI}
+                    value={tag.emoji}
+                />
             </Icon>
             <Content>
                 <AtomText
@@ -18,36 +27,28 @@ const TaskItem = ({ item }: TaskItemType) => {
                     value={item.title}
                     color={ABYSS.normal}
                 />
-                {item.descr && (
+                {item.descr &&
                     <>
                         <AtomText
-                            size={FontSizes.BODY2
-                            }
+                            size={FontSizes.BODY2}
                             family={FontFamilies.REGULAR}
-                            value={item.descr}
+                            value={item.descr ?? ""}
                             color={ABYSS.normal}
                         />
-                        <Tag>
+                        <Deadline>
                             <AtomText
                                 size={FontSizes.CAPTION}
                                 family={FontFamilies.REGULAR}
                                 value={'10 de junho'}
                                 color={ABYSS.lightest}
                             />
-                        </Tag>
+                        </Deadline>
                     </>
-                )
-
                 }
             </Content>
-        </Card>
+            <AtomCheck selected={item.done} />
+        </AtomCard>
     );
 }
 
-const TaskList = ({ items }: TaskListType) => {
-    return (
-        <List scrollEnabled data={items} renderItem={TaskItem} ItemSeparatorComponent={Separator} />
-    );
-}
-
-export default TaskList;
+export default TaskItem;

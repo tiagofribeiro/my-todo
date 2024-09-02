@@ -1,6 +1,6 @@
 import { ColorsType, TagColorsType } from "./types";
 
-const ABYSS: ColorsType = {
+export const ABYSS: ColorsType = {
     lightest: '#322B25',
     lighter: '#2C2621',
     light: '#201C18',
@@ -10,7 +10,7 @@ const ABYSS: ColorsType = {
     darkest: '#0C0A09',
 }
 
-const WHITE_PALACE: ColorsType = {
+export const WHITE_PALACE: ColorsType = {
     lightest: "#F4F2F1",
     lighter: '#E6E3E0',
     light: '#CDC6C0',
@@ -20,7 +20,7 @@ const WHITE_PALACE: ColorsType = {
     darkest: '#64584F',
 }
 
-const MANTIS: ColorsType = {
+export const MANTIS: ColorsType = {
     lightest: "#CBDEDD",
     lighter: '#339993',
     light: '#26827C',
@@ -30,7 +30,7 @@ const MANTIS: ColorsType = {
     darkest: '#052826',
 }
 
-const HALLOWNEST: TagColorsType = {
+export const HALLOWNEST: TagColorsType = {
     grimm: '#FF6F6F',
     fluke: '#E7BCDA',
     crystal: '#BDB4D8',
@@ -39,5 +39,3 @@ const HALLOWNEST: TagColorsType = {
     hive: '#F5D5B4',
     husk: '#F0CBCB',
 }
-
-export { ABYSS, WHITE_PALACE, MANTIS, HALLOWNEST }

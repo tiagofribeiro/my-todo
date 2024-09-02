@@ -23,3 +23,16 @@ export enum ReminderTypes {
     WEEK = 'week',
     MONTH = 'month',
 }
+
+// 
+
+export enum TagTypes {
+    HOUSE = 'house',
+    WORK = 'work',
+    SHOP = 'shop',
+    STUDY = 'study',
+    EXERC = 'exercise',
+    FUN = 'fun',
+    ALERT = 'alert',
+    DEFAULT = 'default',
+}

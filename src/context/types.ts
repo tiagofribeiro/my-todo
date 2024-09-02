@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { ReminderTypes } from "../utils/global/enums";
+import { ReminderTypes, TagTypes } from "../utils/global/enums";
 
 type SetStateType<T> = Dispatch<SetStateAction<T>>;
 
@@ -21,7 +21,7 @@ export type TaskType = {
     title: string;
     descr?: string;
     date?: Date;
-    tags?: string[];
+    tag?: TagTypes;
     reminders?: {
         value: number;
         type: ReminderTypes;

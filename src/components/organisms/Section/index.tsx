@@ -1,7 +1,7 @@
-import { Area, Dashed, Title } from "./styles";
+import { Area, Dashed, List, Separator, Title } from "./styles";
 import { SectionType } from "./types";
 import AtomText from "../../atoms/Text";
-import TaskList from "../../molecules/TaskList";
+import TaskItem from "../../molecules/TaskItem";
 
 import { ABYSS } from "../../../utils/global/colors";
 import { FontFamilies, FontSizes } from "../../../utils/global/enums";
@@ -24,7 +24,12 @@ const Section = ({
                     <Dashed />
                 </Title>
             }
-            <TaskList items={list} />
+            <List
+                scrollEnabled={false}
+                data={list}
+                renderItem={TaskItem}
+                ItemSeparatorComponent={Separator}
+            />
         </Area>
     );
 }

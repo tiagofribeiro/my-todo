@@ -4,6 +4,7 @@ const Area = styled.View`
     flex: 1;
     row-gap: 24px;
     margin: 24px 0;
+    padding-bottom: 78px; 
 `;
 
 const Top = styled.View`
@@ -15,5 +16,6 @@ const Section = styled.View`
     row-gap: 32px;
 `;
 
+const Scroll = styled.ScrollView``;
 
-export { Area, Top, Section }
+export { Area, Top, Section, Scroll }
