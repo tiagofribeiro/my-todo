@@ -15,5 +15,5 @@ export type ColorsType = {
 }
 
 export type TagColorsType = {
-    [key: string]: string | undefined;
+    [key: string]: string;
 }

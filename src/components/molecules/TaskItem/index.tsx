@@ -1,4 +1,4 @@
-import { Content, Icon, Deadline } from "./styles";
+import { Content, Deadline } from "./styles";
 import { TaskItemType } from "./types";
 import AtomText from "../../atoms/Text";
 import AtomCheck from "../../atoms/Check";
@@ -11,15 +11,13 @@ import AtomCard from "../../atoms/Card";
 const TaskItem = ({ item }: TaskItemType) => {
     const tag = item.tag ? Tags[item.tag] : Tags[TagTypes.DEFAULT];
 
+    const dateOptions: Intl.DateTimeFormatOptions = {
+        month: "long",
+        day: "numeric",
+    };
+
     return (
-        <AtomCard>
-            <Icon $color={tag.color}>
-                <AtomText
-                    size={FontSizes.H1}
-                    family={FontFamilies.SEMI}
-                    value={tag.emoji}
-                />
-            </Icon>
+        <AtomCard tag={tag}>
             <Content>
                 <AtomText
                     size={FontSizes.TITLE}
@@ -28,22 +26,22 @@ const TaskItem = ({ item }: TaskItemType) => {
                     color={ABYSS.normal}
                 />
                 {item.descr &&
-                    <>
+                    <AtomText
+                        size={FontSizes.BODY2}
+                        family={FontFamilies.REGULAR}
+                        value={item.descr ?? ""}
+                        color={ABYSS.normal}
+                    />
+                }
+                {item.date &&
+                    <Deadline>
                         <AtomText
-                            size={FontSizes.BODY2}
+                            size={FontSizes.CAPTION}
                             family={FontFamilies.REGULAR}
-                            value={item.descr ?? ""}
-                            color={ABYSS.normal}
+                            value={item.date.toLocaleString("pt-BR", dateOptions)}
+                            color={ABYSS.lightest}
                         />
-                        <Deadline>
-                            <AtomText
-                                size={FontSizes.CAPTION}
-                                family={FontFamilies.REGULAR}
-                                value={'10 de junho'}
-                                color={ABYSS.lightest}
-                            />
-                        </Deadline>
-                    </>
+                    </Deadline>
                 }
             </Content>
             <AtomCheck selected={item.done} />

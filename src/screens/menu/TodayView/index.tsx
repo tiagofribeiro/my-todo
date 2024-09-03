@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native-gesture-handler";
+import { StatusBar } from "react-native";
 
 import AtomArea from "../../../components/atoms/Area";
 import TodayTemplate from "../../../components/templates/TodayTemplate"
@@ -20,10 +20,10 @@ const TodayView = ({ navigation }: MenuStackProps<'Today'>) => {
         {
             title: 'Tarefas Gerais',
             list: [
-                { title: 'Upgrade pc', descr: 'comprar as peças tudo caro demais rtx 4090 wow', done: true },
-                { title: 'Curso docker', descr: 'tenho que fazer nmrl menor', done: false, tag: TagTypes.STUDY },
-                { title: 'Pagar boleto', descr: 'nossa pq sou mt adulto boleto ruim', done: false, tag: TagTypes.SHOP },
-                { title: 'Fogo', descr: 'muito fumaça doido maluco desespero', done: false, tag: TagTypes.ALERT },
+                { title: 'Upgrade pc', descr: 'comprar as peças tudo caro demais rtx 4090 wow', done: true, date: new Date() },
+                { title: 'Curso docker', descr: 'tenho que fazer nmrl menor', done: false, tag: TagTypes.STUDY, date: new Date() },
+                { title: 'Pagar boleto', descr: 'nossa pq sou mt adulto boleto ruim', done: false, tag: TagTypes.SHOP, date: new Date() },
+                { title: 'Fogo', descr: 'muito fumaça doido maluco desespero', done: false, tag: TagTypes.ALERT, date: new Date() },
             ]
         },
     ]

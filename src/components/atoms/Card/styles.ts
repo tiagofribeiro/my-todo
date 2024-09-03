@@ -12,4 +12,11 @@ const Touchable = styled.TouchableOpacity<TouchableType>(({ $color }) => `
     background-color: ${$color};
 `);
 
-export { Touchable }
+const Tag = styled.View<TouchableType>(({ $color }) => `
+    padding: 8px 12px;
+    border-radius: 12px;
+    justify-content: center;
+    background-color: ${$color};
+`);
+
+export { Touchable, Tag }
